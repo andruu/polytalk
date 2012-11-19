@@ -1,1 +1,84 @@
 <h2>Node.js</h2>
+
+<h3>GitHub</h3>
+<p>
+  <strong><a href="https://github.com/andruu/polytalk-node">View polytalk-node on GitHub</a></strong>
+  <br>
+  <a href="https://github.com/andruu/polytalk-node/archive/master.zip">Download ZIP File</a> &nbsp; &middot; &nbsp; <a href="https://github.com/andruu/polytalk-node/archive/master.tar.gz">Download TAR Ball</a>
+</p>
+
+<h3>Installation</h3>
+<p>The recommended way to install Polytalk is <a href="http://npmjs.org">through npm</a>.</p>
+<pre>$ npm install polyscript</pre>
+
+<h3>Server Example</h3>
+<p>Make sure that any classes you want to be exposed by the server to the client are exposed via the server's constructor.</p>
+
+<h4>JavaScript</h4>
+<pre>
+var Polytalk = require('polytalk');
+
+var exposes = {};
+exposes['Model.Order'] = require('./model/order');
+
+var server = new Polytalk.Server({ port: 9090, exposes: exposes });
+
+server.run(function(connection, request) {
+  server.call(request, function (response) {
+    server.push(connection, response);
+  });
+});
+</pre>
+
+<h4>CoffeeScript</h4>
+<pre>
+Polytalk = require 'polytalk'
+
+exposes = {}
+exposes['Model.Order'] = require './model/order'
+
+server = new Polytalk.Server port: 9090, exposes: exposes
+
+server.run (connection, request) ->
+  server.call request, (response) ->
+    server.push(connection, response)
+</pre>
+
+<h3>Client Example</h3>
+
+<h4>JavaScript</h4>
+<pre>
+var Polytalk = require('polytalk');
+
+var request = {
+    class: 'Model::Order',
+    method: 'findBySize',
+    arguments: {
+      size: 'large',
+      limit: 3
+    }
+}
+
+var client = new Polytalk.Client({ port: 9090 });
+
+client.call(request, function (response) {
+  console.log(response);
+});
+</pre> 
+
+<h4>CoffeeScript</h4>
+<pre>
+Polytalk = require 'polytalk'
+
+request = 
+  class: 'Model::Order'
+  method: 'findBySize'
+  arguments:
+    size: 'large'
+    limit: 3
+
+client = new Polytalk.Client port: 9090
+
+client.call request, (response) ->
+  console.log response
+</pre>
