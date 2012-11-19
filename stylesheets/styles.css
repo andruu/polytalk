@@ -178,6 +178,23 @@ header h4 a {
   font-weight:bold;
 }
 
+.sponsor {
+  opacity:0.4;
+  -webkit-transition: opacity 400ms;
+  -moz-transition: opacity 400ms;
+  -ms-transition: opacity 400ms;
+  -o-transition: opacity 400ms;
+  transition: opacity 400ms;
+}
+.sponsor:hover {
+  opacity:1;
+  -webkit-transition: opacity 400ms;
+  -moz-transition: opacity 400ms;
+  -ms-transition: opacity 400ms;
+  -o-transition: opacity 400ms;
+  transition: opacity 400ms;
+}
+
 @media print, screen and (max-width: 960px) {
   
   div.wrapper {
