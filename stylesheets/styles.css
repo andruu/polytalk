@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
 body {
@@ -5,10 +6,11 @@ body {
   font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#777;
   font-weight:300;
+  background-color:#fcfbff;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color:#222;
+  color:#111;
   margin:0 0 20px;
 }
 
@@ -22,6 +24,9 @@ h1, h2, h3 {
 
 h1 {
   font-size:28px;
+  font-family: 'Bree Serif', serif;
+  font-weight:400;
+  color:#4d3499;
 }
 
 h2 {
@@ -33,7 +38,7 @@ h3, h4, h5, h6 {
 }
 
 a {
-  color:#39c;
+  color:#4d3499;
   font-weight:400;
   text-decoration:none;
 }
