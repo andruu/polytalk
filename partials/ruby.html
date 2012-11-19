@@ -1,1 +1,41 @@
 <h2>Ruby</h2>
+
+<h3>Installation</h3>
+<p>Add this line to your application's Gemfile:</p>
+<pre>gem 'polytalk'</pre>
+<p>And then execute:</p>
+<pre>$ bundle</pre>
+<p>Or install it yourself as:</p>
+<pre>gem install polytalk</pre>
+
+<h3>Server Example</h3>
+<p>Make sure that any classes you want to be exposed by the server to the client are included/required and accessible from the server.</p>
+<pre>
+server = Polytalk::Server.new({ port: 9090 })
+server.run do |connection, request|
+  response = server.call(request)
+  server.push(connection, response)
+end
+</pre>
+
+<h3>Client Example</h3>
+<pre>
+request = {
+    class: 'Model::Order',
+    method: 'findBySize',
+    arguments: {
+      size: 'large',
+      limit: 3
+    }
+}
+
+client = Polytalk::Client.new({ port: 9090 })
+
+puts client.call(request)
+
+# Passing a block
+first = client.call(request) do |r|
+  r.first
+end
+puts first
+</pre>

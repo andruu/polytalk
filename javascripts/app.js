@@ -11,9 +11,7 @@ Polytalk.config(function ($routeProvider) {
 });
 
 function AppController ($scope, $location, $rootScope) {
-  // $scope.page = $location.path().split('/')[1];
   $scope.$on("$routeChangeStart", function (event, next, current) {
-    // console.log('hello');
     $scope.page = $location.path().split('/')[1];
   });
 }

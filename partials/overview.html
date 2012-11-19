@@ -7,3 +7,41 @@
 
 <h3>Isn't this what APIs are meant for?</h3>
 <p>Sure, although with APIs you need to write either use a tool to generate the API or write the code yourself. All you have to do to expose your classes with Polytalk is make sure they are accessible from the server.</p>
+
+<h3>The protocol</h3>
+<p>The protocol is a simple language agnostic JSON object containing the class, method and arguments of what you are calling on the server. The server receives the request, parses it and then calls the method returning a response as either a string or JSON object. The client module will then parse the response and return it to the client.</p>
+
+<h4>Example</h4>
+<pre>
+{
+    "class": "Model::Order",
+    "method": "findBySize",
+    "arguments": {
+        "size": "small",
+        "limit": 3
+    }
+}
+</pre>
+
+<table>
+  <thead>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>class</strong></td>
+      <td>The class to call the method on. Namespaced classes require the <code>::</code> separator.</td>
+    </tr>
+    <tr>
+      <td><strong>method</strong></td>
+      <td>The method you want to call on the class (currently static methods only).</td>
+    </tr>
+    <tr>
+      <td><strong>arguments</strong></td>
+      <td>The arguments to inject into the method in key value pairs. The keys are arbitrary although it's a good idea to follow the arguments of the method for convention.</td>
+    </tr>
+  </tbody>
+</table>
