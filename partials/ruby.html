@@ -9,15 +9,15 @@
 
 <h3>Installation</h3>
 <p>Add this line to your application's Gemfile:</p>
-<pre>gem 'polytalk'</pre>
+<pre class="prettyprint">gem 'polytalk'</pre>
 <p>And then execute:</p>
-<pre>$ bundle</pre>
+<pre class="prettyprint">$ bundle</pre>
 <p>Or install it yourself as:</p>
-<pre>gem install polytalk</pre>
+<pre class="prettyprint">gem install polytalk</pre>
 
 <h3>Server Example</h3>
 <p>Make sure that any classes you want to be exposed by the server to the client are included/required and accessible from the server.</p>
-<pre>
+<pre class="prettyprint">
 server = Polytalk::Server.new({ port: 9090 })
 server.run do |connection, request|
   response = server.call(request)
@@ -26,7 +26,7 @@ end
 </pre>
 
 <h3>Client Example</h3>
-<pre>
+<pre class="prettyprint">
 request = {
     class: 'Model::Order',
     method: 'findBySize',

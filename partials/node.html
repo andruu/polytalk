@@ -15,7 +15,7 @@
 <p>Make sure that any classes you want to be exposed by the server to the client are exposed via the server's constructor.</p>
 
 <h4>JavaScript</h4>
-<pre>
+<pre class="prettyprint">
 var Polytalk = require('polytalk');
 
 var exposes = {};
@@ -31,7 +31,7 @@ server.run(function(connection, request) {
 </pre>
 
 <h4>CoffeeScript</h4>
-<pre>
+<pre class="prettyprint">
 Polytalk = require 'polytalk'
 
 exposes = {}
@@ -47,7 +47,7 @@ server.run (connection, request) ->
 <h3>Client Example</h3>
 
 <h4>JavaScript</h4>
-<pre>
+<pre class="prettyprint">
 var Polytalk = require('polytalk');
 
 var request = {
@@ -67,7 +67,7 @@ client.call(request, function (response) {
 </pre> 
 
 <h4>CoffeeScript</h4>
-<pre>
+<pre class="prettyprint">
 Polytalk = require 'polytalk'
 
 request = 

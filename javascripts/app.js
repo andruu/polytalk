@@ -11,7 +11,13 @@ Polytalk.config(function ($routeProvider) {
 });
 
 function AppController ($scope, $location, $rootScope) {
-  $scope.$on("$routeChangeStart", function (event, next, current) {
+
+  $scope.$on("$routeChangeSuccess", function (event, next, current) {
     $scope.page = $location.path().split('/')[1];
   });
+
+  $scope.$on('$viewContentLoaded', function() {
+    prettyPrint();
+  });
+    
 }

@@ -9,7 +9,7 @@
 
 <h3>Installation</h3>
 <p>The recommended way to install Polytalk is <a href="http://getcomposer.org/">through composer</a>.</p>
-<pre>
+<pre class="prettyprint">
 "require": {
   "polytalk/polytalk": "dev-master"
 }
@@ -17,7 +17,7 @@
 
 <h3>Server Example</h3>
 <p>Make sure that any classes you want to be exposed by the server to the client are included/required and accessible from the server.</p>
-<pre>
+<pre class="prettyprint">
 $server = new Polytalk\Server(['port' => 9090]);
 $server->run(function ($connection, $request) use ($server) {
   $response = $server->call($request);
@@ -26,7 +26,7 @@ $server->run(function ($connection, $request) use ($server) {
 </pre>
 
 <h3>Client Example</h3>
-<pre>
+<pre class="prettyprint">
 $client  = new Polytalk\Client(['port' => 9090]);
 
 $request = [
