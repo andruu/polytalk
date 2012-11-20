@@ -1,0 +1,229 @@
+<h2>{{api_name}} Server API</h2>
+
+<!-- Server.new -->
+<div class="method ruby">
+  <h4>Polytalk::Server.new(config) <span class="return">returns Polytalk::Server</span></h4>
+  <p>Creates new instance of the Polytalk server. <code>config</code> is a hash of the configuration options port (default: 9090) and host (default: 127.0.0.1).</p>
+  <pre class="prettyprint">server = Polytalk::Server.new({ port: 9999, host: '192.168.10.59' })</pre>
+</div>
+
+<div class="method php">
+  <h4>new Polytalk\Server(config) <span class="return">returns Polytalk\Server</span></h4>
+  <p>Creates new instance of the Polytalk server. <code>config</code> is a array of the configuration options port (default: 9090) and host (default: 127.0.0.1).</p>
+<pre class="prettyprint">
+$server = new Polytalk\Server.new(
+  array('port' => 9999, 'host' => '192.168.10.59')
+);
+</pre>
+</div>
+
+<div class="method javascript">
+  <h4>new Polytalk.Server(config) <span class="return">returns Polytalk.Server</span></h4>
+  <p>Creates new instance of the Polytalk server. <code>config</code> is a hash of the configuration options port (default: 9090) and host (default: 127.0.0.1) and exposes (which classes you would like to expose to the client).</p>
+<pre class="prettyprint">
+var exposes = {};
+// Assuming you have a directory models with user and post modules
+exposes['Model.User'] = require('./models/user');
+exposes['Model.Post'] = require('./models/post');
+
+var server = new Polytalk.Server(
+  { port: 9999, host: 192.168.10.59, exposes: exposes }
+);
+</pre>
+</div>
+
+<div class="method coffeescript">
+  <h4>new Polytalk.Server(config) <span class="return">returns Polytalk.Server</span></h4>
+    <p>Creates new instance of the Polytalk server. <code>config</code> is a hash of the configuration options port (default: 9090) and host (default: 127.0.0.1) and exposes (which classes you would like to expose to the client).</p>
+<pre class="prettyprint">
+exposes = {}
+# Assuming you have a directory models with user and post modules
+exposes['Model.User'] = require './models/user'
+exposes['Model.Post'] = require './models/post'
+
+server = new Polytalk.Server
+  port: 9999
+  host: 192.168.10.59
+  exposes: exposes
+</pre>
+</div>
+
+<!-- server.run -->
+
+<div class="method ruby">
+  <h4>server.run() <span class="return">returns nil</span></h4>
+  <p>Starts the server. Receives a block with the connection and request as parameters.</p>
+<pre class="prettyprint">
+server.run do |connection, request|
+end
+</pre>
+</div>
+
+<div class="method php">
+  <h4>$server->run($callback) <span class="return">returns null</span></h4>
+  <p>Starts the server. Receives a callback function with the connection and request as parameters.</p>
+<pre class="prettyprint">
+$server->run(function ($connection, $request) use ($server) {
+});
+</pre>
+</div>
+
+<div class="method javascript">
+  <h4>server.run(callback) <span class="return">returns null</span></h4>
+  <p>Starts the server. Receives a callback function with the connection and request as parameters.</p>
+<pre class="prettyprint">
+server.run(function(connection, request) {
+});
+</pre>
+</div>
+
+<div class="method coffeescript">
+  <h4>server.run(callback) <span class="return">returns null</span></h4>
+  <p>Starts the server. Receives a callback function with the connection and request as parameters.</p>
+<pre class="prettyprint">
+server.run (connection, request) ->
+</pre>
+</div>
+
+<!-- server.call -->
+
+<div class="method ruby">
+  <h4>server.call(request) <span class="return">returns Hash</span></h4>
+  <p>Calls the methods from the request object and returns the response.</p>
+<pre class="prettyprint">
+response = server.call(request)
+</pre>
+</div>
+
+<div class="method php">
+  <h4>$server->call($request) <span class="return">returns Array</span></h4>
+  <p>Calls the methods from the request object and returns the response.</p>
+<pre class="prettyprint">
+$response = $server->call($request);
+</pre>
+</div>
+
+<div class="method javascript">
+  <h4>server.call(request, callback) <span class="return">returns Object</span></h4>
+  <p>Calls the methods from the request object and returns the response.</p>
+<pre class="prettyprint">
+server.call(request, function (response) {
+});
+</pre>
+</div>
+
+<div class="method coffeescript">
+  <h4>server.call(request, callback) <span class="return">returns Object</span></h4>
+  <p>Calls the methods from the request object and returns the response.</p>
+<pre class="prettyprint">
+server.call request, (response) ->
+</pre>
+</div>
+
+<!-- server.push -->
+
+<div class="method ruby">
+  <h4>server.push(connections, response) <span class="return">returns nil</span></h4>
+  <p>Sends the response back to the client and closes the connection.</p>
+<pre class="prettyprint">
+server.push(connection, response)
+</pre>
+</div>
+
+<div class="method php">
+  <h4>$server->push($connection, $response) <span class="return">returns null</span></h4>
+  <p>Sends the response back to the client and closes the connection.</p>
+<pre class="prettyprint">
+$server->push($connection, $response);
+</pre>
+</div>
+
+<div class="method javascript">
+  <h4>server.push(connection, response) <span class="return">returns null</span></h4>
+  <p>Sends the response back to the client and closes the connection.</p>
+<pre class="prettyprint">
+server.push(connection, response);
+</pre>
+</div>
+
+<div class="method coffeescript">
+  <h4>server.push(connection, response) <span class="return">returns null</span></h4>
+  <p>Sends the response back to the client and closes the connection.</p>
+<pre class="prettyprint">
+server.push(connection, response)
+</pre>
+</div>
+
+<h2>{{api_name}} Client API</h2>
+
+<!-- Client.new -->
+<div class="method ruby">
+  <h4>Polytalk::Client.new(config) <span class="return">returns Polytalk::Client</span></h4>
+  <p>Creates new instance of the Polytalk server. <code>config</code> is a hash of the configuration options port (default: 9090) and host (default: 127.0.0.1).</p>
+  <pre class="prettyprint">client = Polytalk::Client.new({ port: 9999, host: '192.168.10.59' })</pre>
+</div>
+
+<div class="method php">
+  <h4>new Polytalk\Client(config) <span class="return">returns Polytalk\Client</span></h4>
+  <p>Creates new instance of the Polytalk client. <code>config</code> is a array of the configuration options port (default: 9090) and host (default: 127.0.0.1).</p>
+<pre class="prettyprint">
+$client = new Polytalk\Client.new(
+  array('port' => 9999, 'host' => '192.168.10.59')
+);
+</pre>
+</div>
+
+<div class="method javascript">
+  <h4>new Polytalk.Client(config) <span class="return">returns Polytalk.Client</span></h4>
+  <p>Creates new instance of the Polytalk client. <code>config</code> is a hash of the configuration options port (default: 9090) and host (default: 127.0.0.1).</p>
+<pre class="prettyprint">
+var client = new Polytalk.Client(
+  { port: 9999, host: 192.168.10.59 }
+);
+</pre>
+</div>
+
+<div class="method coffeescript">
+  <h4>new Polytalk.Client(config) <span class="return">returns Polytalk.Client</span></h4>
+    <p>Creates new instance of the Polytalk client. <code>config</code> is a hash of the configuration options port (default: 9090) and host (default: 127.0.0.1).</p>
+<pre class="prettyprint">
+client = new Polytalk.Client
+  port: 9999
+  host: 192.168.10.59
+</pre>
+</div>
+
+<!-- client.call -->
+
+<div class="method ruby">
+  <h4>client.call(request) <span class="return">returns Hash</span></h4>
+  <p>Calls the methods from the request object and returns the response.</p>
+<pre class="prettyprint">
+response = client.call(request)
+</pre>
+</div>
+
+<div class="method php">
+  <h4>$client->call($request) <span class="return">returns Array</span></h4>
+  <p>Calls the methods from the request object and returns the response.</p>
+<pre class="prettyprint">
+$response = $client->call($request);
+</pre>
+</div>
+
+<div class="method javascript">
+  <h4>client.call(request, callback) <span class="return">returns Object</span></h4>
+  <p>Calls the methods from the request object and returns the response.</p>
+<pre class="prettyprint">
+client.call(request, function (response) {
+});
+</pre>
+</div>
+
+<div class="method coffeescript">
+  <h4>client.call(request, callback) <span class="return">returns Object</span></h4>
+  <p>Calls the methods from the request object and returns the response.</p>
+<pre class="prettyprint">
+client.call request, (response) ->
+</pre>
+</div>
