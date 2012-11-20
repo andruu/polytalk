@@ -191,7 +191,10 @@ footer {
   width:270px;
   float:left;
   position:fixed;
-  bottom:50px;
+  bottom:20px;
+}
+footer p {
+  margin-bottom: 5px;
 }
 
 header h4 {
