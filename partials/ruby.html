@@ -26,13 +26,15 @@ end
 </pre>
 
 <h3>Client Example</h3>
+<p>Make sure to prepend your argument with `:` if you the ruby method accepts a symbol instead of a string.</p>
 <pre class="prettyprint">
 request = {
     class: 'Model::Order',
     method: 'findBySize',
     arguments: {
       size: 'large',
-      limit: 3
+      limit: 3,
+      symbol: ':first'
     }
 }
 
